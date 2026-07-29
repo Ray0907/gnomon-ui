@@ -3,6 +3,7 @@ import "@fontsource-variable/archivo";
 import "@fontsource-variable/jetbrains-mono";
 import "@gnomon-ui/theme/styles.css";
 import "./globals.css";
+import "./reference/reference.css";
 import { siteConfig } from "./site-config";
 
 const url_site = process.env.NEXT_PUBLIC_SITE_URL ?? siteConfig.url;

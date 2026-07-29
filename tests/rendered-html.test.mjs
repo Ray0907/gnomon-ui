@@ -6,6 +6,13 @@ async function readRenderedPage() {
 	return readFile(new URL("../dist/index.html", import.meta.url), "utf8");
 }
 
+async function readRenderedRoute(path_route) {
+	return readFile(
+		new URL(`../dist/${path_route}/index.html`, import.meta.url),
+		"utf8",
+	);
+}
+
 async function readSources() {
 	const paths_source = {
 		core: "../packages/core/src/index.ts",
@@ -61,6 +68,34 @@ test("exports the Gnomon UI framework demo", async () => {
 		assert.match(html, /\/gnomon-ui\/_next\//);
 		assert.match(html, /\/gnomon-ui\/icon\.svg/);
 	}
+});
+
+test("links primary navigation to substantive documentation routes", async () => {
+	const html = await readRenderedPage();
+	assert.doesNotMatch(
+		html,
+		/href="#(?:anatomy|adapters|stage|installation)"/,
+	);
+	assert.match(html, /href="(?:\/gnomon-ui)?\/docs\/primitives\/"/);
+	assert.match(html, /href="(?:\/gnomon-ui)?\/docs\/adapters\/"/);
+	assert.match(
+		html,
+		/href="(?:\/gnomon-ui)?\/examples\/spatial-collection\/"/,
+	);
+	assert.match(html, /href="(?:\/gnomon-ui)?\/docs\/getting-started\/"/);
+
+	const [html_primitives, html_adapters, html_example, html_getting_started] =
+		await Promise.all([
+			readRenderedRoute("docs/primitives"),
+			readRenderedRoute("docs/adapters"),
+			readRenderedRoute("examples/spatial-collection"),
+			readRenderedRoute("docs/getting-started"),
+		]);
+
+	assert.match(html_primitives, /Primitive anatomy/);
+	assert.match(html_adapters, /One contract, every framework/);
+	assert.match(html_example, /Spatial Collection/);
+	assert.match(html_getting_started, /Run Gnomon UI locally/);
 });
 
 test("keeps core framework agnostic and ships React and Vue bindings", async () => {

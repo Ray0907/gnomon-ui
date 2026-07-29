@@ -19,6 +19,7 @@ import {
 	useState,
 	type KeyboardEvent,
 } from "react";
+import Link from "next/link";
 import { Spatial, useSpatial } from "@gnomon-ui/react";
 import {
 	mountSpatialRenderer,
@@ -305,24 +306,24 @@ function RegistrationLine({
 function DocsHeader() {
 	return (
 		<header className="gnomon-header">
-			<a className="brand-lockup" href="#top" aria-label="Gnomon UI home">
+			<Link className="brand-lockup" href="/" aria-label="Gnomon UI home">
 				<span className="brand-mark">
 					<CubeMark />
 				</span>
 				<span>GNOMON UI</span>
 				<small>v0.1</small>
-			</a>
+			</Link>
 			<nav className="primary-nav" aria-label="Primary navigation">
-				<a href="#anatomy">Primitives</a>
-				<a href="#adapters">Adapters</a>
-				<a href="#stage">Example</a>
+				<Link href="/docs/primitives/">Primitives</Link>
+				<Link href="/docs/adapters/">Adapters</Link>
+				<Link href="/examples/spatial-collection/">Example</Link>
 			</nav>
 			<div className="header-readout" aria-label="Project status">
 				<span>
 					<i />
 					CORE / FRAMEWORK AGNOSTIC
 				</span>
-				<a href="#installation">GET STARTED</a>
+				<Link href="/docs/getting-started/">GET STARTED</Link>
 			</div>
 		</header>
 	);
