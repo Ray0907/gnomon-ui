@@ -6,6 +6,11 @@ Official site: [ray0907.github.io/gnomon-ui](https://ray0907.github.io/gnomon-ui
 
 Source: [github.com/Ray0907/gnomon-ui](https://github.com/Ray0907/gnomon-ui)
 
+[![Gnomon UI spatial primitives and WebGL scene][preview-image]][official-site]
+
+[preview-image]: ./public/social-card.jpg
+[official-site]: https://ray0907.github.io/gnomon-ui/
+
 Gnomon UI separates collection state and input contracts from rendering. A React,
 Vue, or future framework adapter can drive the same Three.js scene without moving
 selection logic, keyboard behavior, or accessibility into the canvas.
