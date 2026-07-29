@@ -1,8 +1,18 @@
 {
   "name": "@gnomon-ui/three",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "description": "Framework-neutral renderer lifecycle for Gnomon UI and Three.js.",
   "license": "MIT",
+  "homepage": "https://ray0907.github.io/gnomon-ui/docs/adapters/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ray0907/gnomon-ui.git",
+    "directory": "packages/three"
+  },
+  "bugs": {
+    "url": "https://github.com/Ray0907/gnomon-ui/issues"
+  },
+  "keywords": ["renderer", "spatial-ui", "three", "webgl"],
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -14,14 +24,18 @@
   "files": ["dist", "src"],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "pnpm build",
     "type-check": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@gnomon-ui/core": "workspace:*",
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "@gnomon-ui/core": "^0.1.0",
-    "three": ">=0.160.0"
+    "@gnomon-ui/core": "^0.1.0-alpha.1",
+    "three": ">=0.160.0 <1"
   }
 }

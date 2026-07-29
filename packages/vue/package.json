@@ -1,8 +1,18 @@
 {
   "name": "@gnomon-ui/vue",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "description": "Vue components and composables for Gnomon UI.",
   "license": "MIT",
+  "homepage": "https://ray0907.github.io/gnomon-ui/docs/adapters/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ray0907/gnomon-ui.git",
+    "directory": "packages/vue"
+  },
+  "bugs": {
+    "url": "https://github.com/Ray0907/gnomon-ui/issues"
+  },
+  "keywords": ["accessibility", "headless", "spatial-ui", "vue"],
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -14,17 +24,19 @@
   "files": ["dist", "src"],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "pnpm build",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {
-    "@gnomon-ui/core": "workspace:*"
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
+    "@gnomon-ui/core": "workspace:*",
     "typescript": "5.9.3",
     "vue": "3.5.24"
   },
   "peerDependencies": {
-    "@gnomon-ui/core": "^0.1.0",
-    "vue": ">=3.4.0"
+    "@gnomon-ui/core": "^0.1.0-alpha.1",
+    "vue": ">=3.4.0 <4"
   }
 }

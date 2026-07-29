@@ -13,6 +13,28 @@ async function readRenderedRoute(path_route) {
 	);
 }
 
+async function readPackageManifests() {
+	const names_package = ["core", "react", "vue", "three", "theme"];
+	return Promise.all(
+		names_package.map(async (name_package) => {
+			const path_package = `../packages/${name_package}/package.json`;
+			const contents_package = await readFile(
+				new URL(path_package, import.meta.url),
+				"utf8",
+			);
+			await readFile(
+				new URL(`../packages/${name_package}/LICENSE`, import.meta.url),
+				"utf8",
+			);
+			await readFile(
+				new URL(`../packages/${name_package}/README.md`, import.meta.url),
+				"utf8",
+			);
+			return JSON.parse(contents_package);
+		}),
+	);
+}
+
 async function readSources() {
 	const paths_source = {
 		core: "../packages/core/src/index.ts",
@@ -111,6 +133,30 @@ test("redirects legacy homepage hashes to their substantive routes", async () =>
 		"/docs/getting-started/",
 	);
 	assert.equal(getRouteFromLegacyHash("#unknown"), null);
+});
+
+test("keeps public package manifests release-safe", async () => {
+	const manifests_package = await readPackageManifests();
+	const versions_package = new Set(
+		manifests_package.map((package_current) => package_current.version),
+	);
+	assert.equal(versions_package.size, 1);
+
+	for (const package_current of manifests_package) {
+		assert.match(package_current.name, /^@gnomon-ui\//);
+		assert.equal(package_current.license, "MIT");
+		assert.equal(package_current.publishConfig.access, "public");
+		assert.equal(
+			package_current.repository.url,
+			"git+https://github.com/Ray0907/gnomon-ui.git",
+		);
+		const dependencies_runtime = {
+			...package_current.dependencies,
+			...package_current.optionalDependencies,
+			...package_current.peerDependencies,
+		};
+		assert.doesNotMatch(JSON.stringify(dependencies_runtime), /workspace:/);
+	}
 });
 
 test("keeps core framework agnostic and ships React and Vue bindings", async () => {

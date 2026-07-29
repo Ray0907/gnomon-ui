@@ -1,10 +1,24 @@
 {
   "name": "@gnomon-ui/theme",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "description": "Optional calibration-lab theme tokens for Gnomon UI.",
   "license": "MIT",
+  "homepage": "https://ray0907.github.io/gnomon-ui/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ray0907/gnomon-ui.git",
+    "directory": "packages/theme"
+  },
+  "bugs": {
+    "url": "https://github.com/Ray0907/gnomon-ui/issues"
+  },
+  "keywords": ["css", "design-tokens", "spatial-ui", "theme"],
   "sideEffects": ["styles.css"],
   "exports": {
     "./styles.css": "./styles.css"
+  },
+  "files": ["styles.css"],
+  "publishConfig": {
+    "access": "public"
   }
 }
