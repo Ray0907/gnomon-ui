@@ -48,7 +48,19 @@ test("exports the Gnomon UI framework demo", async () => {
 	assert.match(html, /Select Mineral Vessel/);
 	assert.match(html, /pnpm add @gnomon-ui\/react @gnomon-ui\/three/);
 	assert.match(html, /og:image/);
-	assert.match(html, /\/social-card\.jpg/);
+	assert.match(
+		html,
+		/https:\/\/ray0907\.github\.io\/gnomon-ui\/social-card\.jpg/,
+	);
+	assert.match(
+		html,
+		/https:\/\/ray0907\.github\.io\/gnomon-ui\//,
+	);
+	assert.match(html, /rel="icon"/);
+	if (process.env.NEXT_PUBLIC_BASE_PATH) {
+		assert.match(html, /\/gnomon-ui\/_next\//);
+		assert.match(html, /\/gnomon-ui\/icon\.svg/);
+	}
 });
 
 test("keeps core framework agnostic and ships React and Vue bindings", async () => {

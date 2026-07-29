@@ -2,6 +2,10 @@
 
 Accessible primitives for spatial interfaces.
 
+Official site: [ray0907.github.io/gnomon-ui](https://ray0907.github.io/gnomon-ui/)
+
+Source: [github.com/Ray0907/gnomon-ui](https://github.com/Ray0907/gnomon-ui)
+
 Gnomon UI separates collection state and input contracts from rendering. A React,
 Vue, or future framework adapter can drive the same Three.js scene without moving
 selection logic, keyboard behavior, or accessibility into the canvas.
@@ -12,10 +16,10 @@ shape or bundled content library.
 
 ## Status
 
-Gnomon UI is an unpublished v0.1 framework prototype. The repository implements and
+Gnomon UI is a public v0.1 framework prototype. The repository implements and
 tests the package boundaries, state contracts, React/Vue bindings, Three.js
-lifecycle, and documentation demo. Package names and the public npm namespace have
-not been reserved.
+lifecycle, and documentation demo. The npm packages remain unpublished and the
+public npm namespace has not been reserved.
 
 ## Packages
 
@@ -136,7 +140,8 @@ pnpm build
 ```
 
 The site exports to `dist/`. Set `NEXT_PUBLIC_SITE_URL` before a production build
-to generate absolute social metadata.
+to override the official social metadata origin. GitHub Pages additionally builds
+with `NEXT_PUBLIC_BASE_PATH=/gnomon-ui`.
 
 ## Provenance
 

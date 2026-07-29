@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
+const path_base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
+	basePath: path_base,
 	output: "export",
 	distDir: "dist",
 	trailingSlash: true,
