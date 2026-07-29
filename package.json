@@ -1,6 +1,6 @@
 {
   "name": "gnomon-ui-workspace",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -17,7 +17,7 @@
     "lint": "eslint .",
     "pretype-check": "pnpm packages:build",
     "type-check": "tsc --noEmit && pnpm -r --if-present type-check",
-    "test": "pnpm build && node --experimental-strip-types --test tests/rendered-html.test.mjs",
+    "test": "pnpm build && vitest run && node --experimental-strip-types --test tests/rendered-html.test.mjs",
     "check": "pnpm lint && pnpm type-check && pnpm test"
   },
   "dependencies": {
@@ -25,8 +25,8 @@
     "@fontsource-variable/jetbrains-mono": "5.2.8",
     "@gnomon-ui/core": "workspace:*",
     "@gnomon-ui/react": "workspace:*",
-    "@gnomon-ui/three": "workspace:*",
     "@gnomon-ui/theme": "workspace:*",
+    "@gnomon-ui/three": "workspace:*",
     "next": "16.2.10",
     "react": "19.2.7",
     "react-dom": "19.2.7",
@@ -34,14 +34,20 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.2",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.1",
+    "@testing-library/vue": "8.1.0",
     "@types/node": "22.19.15",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@types/three": "0.185.1",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.10",
+    "jsdom": "30.0.0",
     "tailwindcss": "4.3.2",
     "typescript": "5.9.3",
+    "vitest": "4.1.10",
     "vue": "3.5.24"
   },
   "packageManager": "pnpm@11.0.0+sha512.5bd187500e49cc6c3d891d973b432c02b844a5eb7209172c90a517a3ef4f579ed5c23d409b699e6a9dc418ff7b2b1890e63f6d74f1d3fc49848f37779c89c84c"

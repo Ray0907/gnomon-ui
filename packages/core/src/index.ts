@@ -55,6 +55,26 @@ function getEnabledItems(items: readonly SpatialItemRecord[]) {
 	return items.filter((item_record) => !item_record.disabled);
 }
 
+function validateSpatialItems(items: readonly SpatialItemRecord[]) {
+	const values_seen = new Set<string>();
+	for (const item_record of items) {
+		if (values_seen.has(item_record.value)) {
+			throw new Error(
+				"Spatial items must use unique values. Received duplicate value " +
+					`${JSON.stringify(item_record.value)}.`,
+			);
+		}
+		values_seen.add(item_record.value);
+	}
+}
+
+export function getSpatialItemId(id_base: string, value_item: string) {
+	const value_encoded = Array.from(value_item, (character_value) =>
+		character_value.codePointAt(0)!.toString(36),
+	).join("-");
+	return `${id_base}-item-${value_encoded || "empty"}`;
+}
+
 export function getInitialValue(options: SpatialStoreOptions) {
 	const items_enabled = getEnabledItems(options.items);
 	const value_requested = options.value ?? options.defaultValue;
@@ -125,6 +145,7 @@ export function getItemState(value_item: string, snapshot: SpatialSnapshot) {
 }
 
 export function createSpatialStore(options_initial: SpatialStoreOptions): SpatialStore {
+	validateSpatialItems(options_initial.items);
 	let options_current = { ...options_initial };
 	let value_internal = getInitialValue(options_initial);
 	let snapshot_current = createSnapshot();
@@ -154,7 +175,9 @@ export function createSpatialStore(options_initial: SpatialStoreOptions): Spatia
 
 	function setOptions(options_next: Partial<SpatialStoreOptions>) {
 		const snapshot_before = snapshot_current;
-		options_current = { ...options_current, ...options_next };
+		const options_merged = { ...options_current, ...options_next };
+		validateSpatialItems(options_merged.items);
+		options_current = options_merged;
 		if (!isControlled()) {
 			const values_enabled = getEnabledItems(options_current.items);
 			const value_exists = values_enabled.some(
@@ -209,7 +232,7 @@ export function createSpatialStore(options_initial: SpatialStoreOptions): Spatia
 			direction,
 			options_current.loop,
 		);
-		if (value_next) setValue(value_next, reason);
+		if (value_next !== null) setValue(value_next, reason);
 	}
 
 	return {

@@ -20,7 +20,8 @@ store.selectNext();
 
 Core owns ordered items, controlled or uncontrolled selection, disabled-state
 rules, keyboard intent, and subscriptions. It has no React, Vue, or renderer
-dependency.
+dependency. Each item value is a unique identity; duplicate values throw before
+the store can publish an ambiguous snapshot.
 
 This is an alpha release. See the
 [Gnomon UI documentation](https://ray0907.github.io/gnomon-ui/docs/primitives/)

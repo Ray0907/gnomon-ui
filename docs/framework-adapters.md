@@ -22,7 +22,7 @@ geometry · models · materials · camera · lighting
 
 `createSpatialStore()` accepts:
 
-- `items`: ordered `{ value, disabled?, textValue? }` records.
+- `items`: ordered `{ value, disabled?, textValue? }` records with unique values.
 - `value` or `defaultValue`: controlled or uncontrolled selection.
 - `orientation`: horizontal or vertical keyboard intent.
 - `loop`: whether navigation wraps collection edges.
@@ -43,8 +43,10 @@ React and Vue emit the same styling and state attributes:
 - `data-orientation="horizontal | vertical"`
 - `data-disabled`
 
-Both bindings keep the active option discoverable, label icon-only actions, and
-route Home, End, and axis-specific arrow keys through the core navigation helpers.
+Both bindings generate safe option IDs, keep DOM focus on the collection, keep the
+active option discoverable, label icon-only actions, and route Home, End, and
+axis-specific arrow keys through the core navigation helpers. `Spatial.Item`
+belongs inside `Spatial.Collection`.
 
 ## React adapter
 
@@ -63,13 +65,16 @@ React exposes:
 use `onValueChange`; uncontrolled values use `defaultValue`. `Spatial.Scene`
 receives the current snapshot through a render function and marks the
 project-owned renderer host without taking over its geometry or lifecycle.
+Consumer events run before internal handlers and can cancel selection with
+`preventDefault()`.
 
 ## Vue adapter
 
 Vue exposes the matching `Spatial.*` components and `useSpatial()` composable.
 `v-model` maps to the core controlled value. Scoped slots receive active state
 without moving item order or input logic into templates. `Spatial.Scene` exposes
-the same snapshot as a scoped slot and accepts an `as` element.
+the same snapshot as a scoped slot and accepts an `as` element. Native listeners
+compose with internal handlers and follow the same `preventDefault()` convention.
 
 ## Renderer adapter
 
@@ -98,7 +103,8 @@ A new adapter should:
 2. Map controlled value conventions to `setOptions({ value })`.
 3. Preserve the DOM attributes and keyboard intent above.
 4. Keep renderer lifecycle outside the component state machine.
-5. Test disabled items, loop boundaries, RTL horizontal navigation, and cleanup.
+5. Test pointer-to-keyboard focus, consumer events, disabled items, loop
+   boundaries, RTL horizontal navigation, and cleanup.
 
 Svelte and Solid are architecture targets, not shipped or compatibility-tested
 packages in v0.1.

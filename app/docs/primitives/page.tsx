@@ -39,13 +39,17 @@ export default function PrimitivesPage() {
 						<dt>Spatial.Scene</dt>
 						<dd>Exposes the current snapshot to a project-owned renderer host.</dd>
 					</div>
-					<div>
-						<dt>Spatial.Collection</dt>
-						<dd>Provides listbox semantics and keyboard navigation intent.</dd>
-					</div>
-					<div>
-						<dt>Spatial.Item</dt>
-						<dd>Maps one semantic option to one selectable spatial object.</dd>
+						<div>
+							<dt>Spatial.Collection</dt>
+							<dd>
+								Owns listbox focus, active-descendant state, and keyboard intent.
+							</dd>
+						</div>
+						<div>
+							<dt>Spatial.Item</dt>
+							<dd>
+								Maps one unique value inside a collection to one spatial object.
+							</dd>
 					</div>
 					<div>
 						<dt>Previous / Next</dt>
@@ -62,10 +66,12 @@ export default function PrimitivesPage() {
 				</p>
 				<div className="reference-callout">
 					<span>RULE 01</span>
-					<p>
-						If a scene can be selected with a pointer, its equivalent semantic
-						item must expose the same value and state.
-					</p>
+						<p>
+							If a scene can be selected with a pointer, its equivalent semantic
+							item must expose the same unique value and state inside
+							{" "}
+							<code>Spatial.Collection</code>.
+						</p>
 				</div>
 			</section>
 

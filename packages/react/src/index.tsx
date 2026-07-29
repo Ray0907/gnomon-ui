@@ -10,6 +10,7 @@ import {
 	useEffect,
 	useId,
 	useMemo,
+	useRef,
 	useState,
 	useSyncExternalStore,
 	type ButtonHTMLAttributes,
@@ -24,6 +25,7 @@ import {
 	getAdjacentValue,
 	getItemState,
 	getNavigationReason,
+	getSpatialItemId,
 	type SpatialChangeDetails,
 	type SpatialItemRecord,
 	type SpatialOrientation,
@@ -42,7 +44,14 @@ type SpatialContextValue = {
 	id_base: string;
 };
 
+type SpatialCollectionContextValue = {
+	element_collection: React.RefObject<HTMLElement | null>;
+	id_base: string;
+};
+
 const SpatialContext = createContext<SpatialContextValue | null>(null);
+const SpatialCollectionContext =
+	createContext<SpatialCollectionContextValue | null>(null);
 
 function composeRefs(
 	ref_forwarded: React.ForwardedRef<HTMLElement>,
@@ -96,6 +105,14 @@ function useSpatialContext(component_name: string) {
 	const context_value = useContext(SpatialContext);
 	if (!context_value) {
 		throw new Error(`${component_name} must be used inside Spatial.Root.`);
+	}
+	return context_value;
+}
+
+function useSpatialCollectionContext(component_name: string) {
+	const context_value = useContext(SpatialCollectionContext);
+	if (!context_value) {
+		throw new Error(`${component_name} must be used inside Spatial.Collection.`);
 	}
 	return context_value;
 }
@@ -211,7 +228,17 @@ const SpatialCollection = forwardRef<HTMLElement, SpatialCollectionProps>(
 	) {
 		const { id_base } = useSpatialContext("Spatial.Collection");
 		const spatial = useSpatial();
+		const id_collection = useId();
+		const element_collection = useRef<HTMLElement>(null);
+		const id_base_collection = `${id_base}-${id_collection}`;
 		const Component: ElementType = asChild ? Slot : "div";
+		const context_collection = useMemo(
+			() => ({
+				element_collection,
+				id_base: id_base_collection,
+			}),
+			[id_base_collection],
+		);
 
 		function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
 			onKeyDown?.(event);
@@ -234,19 +261,23 @@ const SpatialCollection = forwardRef<HTMLElement, SpatialCollectionProps>(
 		}
 
 		return (
-			<Component
-				{...props_collection}
-				ref={ref_forwarded as Ref<HTMLDivElement>}
-				role="listbox"
-				tabIndex={props_collection.tabIndex ?? 0}
-				aria-activedescendant={
-					spatial.value ? `${id_base}-${spatial.value}` : undefined
-				}
-				aria-orientation={spatial.orientation}
-				data-orientation={spatial.orientation}
-				data-gnomon-collection=""
-				onKeyDown={handleKeyDown}
-			/>
+			<SpatialCollectionContext.Provider value={context_collection}>
+				<Component
+					{...props_collection}
+					ref={composeRefs(ref_forwarded, element_collection)}
+					role="listbox"
+					tabIndex={props_collection.tabIndex ?? 0}
+					aria-activedescendant={
+						spatial.value !== null
+							? getSpatialItemId(id_base_collection, spatial.value)
+							: undefined
+					}
+					aria-orientation={spatial.orientation}
+					data-orientation={spatial.orientation}
+					data-gnomon-collection=""
+					onKeyDown={handleKeyDown}
+				/>
+			</SpatialCollectionContext.Provider>
 		);
 	},
 );
@@ -261,7 +292,8 @@ const SpatialItem = forwardRef<HTMLElement, SpatialItemProps>(
 		{ value, asChild = false, disabled, onClick, ...props_item },
 		ref_forwarded,
 	) {
-		const { id_base } = useSpatialContext("Spatial.Item");
+		const { element_collection, id_base } =
+			useSpatialCollectionContext("Spatial.Item");
 		const spatial = useSpatial();
 		const item_record = spatial.items.find(
 			(item_candidate) => item_candidate.value === value,
@@ -272,9 +304,9 @@ const SpatialItem = forwardRef<HTMLElement, SpatialItemProps>(
 
 		function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
 			onClick?.(event);
-			if (!event.defaultPrevented && !is_disabled) {
-				spatial.setValue(value, "item");
-			}
+			if (is_disabled) return;
+			if (!event.defaultPrevented) spatial.setValue(value, "item");
+			element_collection.current?.focus({ preventScroll: true });
 		}
 
 		return (
@@ -282,7 +314,7 @@ const SpatialItem = forwardRef<HTMLElement, SpatialItemProps>(
 				{...props_item}
 				{...getItemState(value, spatial)}
 				ref={ref_forwarded as Ref<HTMLButtonElement>}
-				id={`${id_base}-${value}`}
+				id={getSpatialItemId(id_base, value)}
 				type={asChild ? undefined : "button"}
 				role="option"
 				aria-selected={is_active}
