@@ -3,6 +3,7 @@ import {
 	defineComponent,
 	h,
 	inject,
+	mergeProps,
 	onBeforeUnmount,
 	provide,
 	ref,
@@ -17,6 +18,7 @@ import {
 	getAdjacentValue,
 	getItemState,
 	getNavigationReason,
+	getSpatialItemId,
 	type SpatialItemRecord,
 	type SpatialOrientation,
 	type SpatialStore,
@@ -28,12 +30,28 @@ type SpatialVueContext = {
 	id_base: string;
 };
 
+type SpatialVueCollectionContext = {
+	element_collection: Ref<HTMLElement | null>;
+	id_base: string;
+};
+
 const spatial_key: InjectionKey<SpatialVueContext> = Symbol("GnomonSpatial");
+const spatial_collection_key: InjectionKey<SpatialVueCollectionContext> = Symbol(
+	"GnomonSpatialCollection",
+);
 
 function getSpatialContext(component_name: string) {
 	const context_value = inject(spatial_key, null);
 	if (!context_value) {
 		throw new Error(`${component_name} must be used inside Spatial.Root.`);
+	}
+	return context_value;
+}
+
+function getSpatialCollectionContext(component_name: string) {
+	const context_value = inject(spatial_collection_key, null);
+	if (!context_value) {
+		throw new Error(`${component_name} must be used inside Spatial.Collection.`);
 	}
 	return context_value;
 }
@@ -142,8 +160,13 @@ const SpatialCollection = defineComponent({
 	},
 	setup(props, { attrs, slots }) {
 		const spatial = getSpatialBindings();
+		const id_collection = getVueId();
+		const element_collection = ref<HTMLElement | null>(null);
+		const id_base = `${spatial.idBase}-${id_collection}`;
+		provide(spatial_collection_key, { element_collection, id_base });
 
 		function handleKeyDown(event: KeyboardEvent) {
+			if (event.defaultPrevented) return;
 			const element_current = event.currentTarget as HTMLElement;
 			const direction_text =
 				getComputedStyle(element_current).direction === "rtl" ? "rtl" : "ltr";
@@ -163,18 +186,18 @@ const SpatialCollection = defineComponent({
 		return () =>
 			h(
 				props.as,
-				{
-					...attrs,
+				mergeProps(attrs, {
+					ref: element_collection,
 					role: "listbox",
 					tabindex: attrs.tabindex ?? 0,
-					"aria-activedescendant": spatial.snapshot.value.value
-						? `${spatial.idBase}-${spatial.snapshot.value.value}`
+					"aria-activedescendant": spatial.snapshot.value.value !== null
+						? getSpatialItemId(id_base, spatial.snapshot.value.value)
 						: undefined,
 					"aria-orientation": spatial.snapshot.value.orientation,
 					"data-orientation": spatial.snapshot.value.orientation,
 					"data-gnomon-collection": "",
 					onKeydown: handleKeyDown,
-				},
+				}),
 				slots.default?.(),
 			);
 	},
@@ -190,20 +213,21 @@ const SpatialItem = defineComponent({
 	},
 	setup(props, { attrs, slots }) {
 		const spatial = getSpatialBindings();
+		const { element_collection, id_base } =
+			getSpatialCollectionContext("Spatial.Item");
 		return () => {
 			const snapshot = spatial.snapshot.value;
 			const item_record = snapshot.items.find(
 				(item_candidate) => item_candidate.value === props.value,
 			);
-			const is_disabled = props.disabled || item_record?.disabled;
+			const is_disabled = props.disabled || item_record?.disabled || false;
 			const is_active = snapshot.value === props.value;
 			return h(
 				props.as,
-				{
-					...attrs,
+				mergeProps(attrs, {
 					...getItemState(props.value, snapshot),
 					type: props.as === "button" ? "button" : undefined,
-					id: `${spatial.idBase}-${props.value}`,
+					id: getSpatialItemId(id_base, props.value),
 					role: "option",
 					disabled: props.as === "button" ? is_disabled : undefined,
 					"aria-disabled": is_disabled || undefined,
@@ -211,10 +235,14 @@ const SpatialItem = defineComponent({
 					tabindex: -1,
 					"data-gnomon-item": "",
 					"data-gnomon-value": props.value,
-					onClick: () => {
-						if (!is_disabled) spatial.setValue(props.value, "item");
+					onClick: (event: MouseEvent) => {
+						if (is_disabled) return;
+						if (!event.defaultPrevented) {
+							spatial.setValue(props.value, "item");
+						}
+						element_collection.value?.focus({ preventScroll: true });
 					},
-				},
+				}),
 				slots.default?.({ active: is_active }),
 			);
 		};
@@ -227,6 +255,7 @@ function createDirectionComponent(direction: "previous" | "next") {
 		inheritAttrs: false,
 		props: {
 			as: { type: String, default: "button" },
+			disabled: { type: Boolean, default: false },
 		},
 		setup(props, { attrs, slots }) {
 			const spatial = getSpatialBindings();
@@ -240,22 +269,23 @@ function createDirectionComponent(direction: "previous" | "next") {
 					snapshot.loop,
 				);
 				const is_disabled =
-					value_next === null || value_next === snapshot.value;
+					props.disabled ||
+					value_next === null ||
+					value_next === snapshot.value;
 				return h(
 					props.as,
-					{
-						...attrs,
+					mergeProps(attrs, {
 						type: props.as === "button" ? "button" : undefined,
 						disabled: props.as === "button" ? is_disabled : undefined,
 						"aria-disabled": is_disabled || undefined,
 						"data-disabled": is_disabled ? "" : undefined,
 						"data-gnomon-direction": direction,
-						onClick: () => {
-							if (is_disabled) return;
+						onClick: (event: MouseEvent) => {
+							if (event.defaultPrevented || is_disabled) return;
 							if (direction === "next") spatial.selectNext();
 							else spatial.selectPrevious();
 						},
-					},
+					}),
 					slots.default?.(),
 				);
 			};

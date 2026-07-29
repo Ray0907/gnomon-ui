@@ -1,6 +1,6 @@
 {
   "name": "@gnomon-ui/theme",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Optional calibration-lab theme tokens for Gnomon UI.",
   "license": "MIT",
   "homepage": "https://ray0907.github.io/gnomon-ui/",

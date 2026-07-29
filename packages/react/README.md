@@ -22,7 +22,9 @@ import { Spatial } from "@gnomon-ui/react";
 ```
 
 The React adapter includes controlled and uncontrolled state, `asChild`
-composition, semantic collection attributes, and keyboard navigation.
+composition, semantic collection attributes, and keyboard navigation. Items belong
+inside `Spatial.Collection`; consumer events run before Gnomon behavior and may
+cancel selection with `preventDefault()`.
 
 This is an alpha release. See the
 [adapter guide](https://ray0907.github.io/gnomon-ui/docs/adapters/) and

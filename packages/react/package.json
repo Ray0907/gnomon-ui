@@ -1,6 +1,6 @@
 {
   "name": "@gnomon-ui/react",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "React compound components and hooks for Gnomon UI.",
   "license": "MIT",
   "homepage": "https://ray0907.github.io/gnomon-ui/docs/adapters/",
@@ -37,7 +37,7 @@
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "@gnomon-ui/core": "^0.1.0-alpha.1",
+    "@gnomon-ui/core": "^0.1.0-alpha.2",
     "react": ">=18.3.0 <20"
   }
 }

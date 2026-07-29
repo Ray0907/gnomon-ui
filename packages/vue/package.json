@@ -1,6 +1,6 @@
 {
   "name": "@gnomon-ui/vue",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Vue components and composables for Gnomon UI.",
   "license": "MIT",
   "homepage": "https://ray0907.github.io/gnomon-ui/docs/adapters/",
@@ -36,7 +36,7 @@
     "vue": "3.5.24"
   },
   "peerDependencies": {
-    "@gnomon-ui/core": "^0.1.0-alpha.1",
+    "@gnomon-ui/core": "^0.1.0-alpha.2",
     "vue": ">=3.4.0 <4"
   }
 }

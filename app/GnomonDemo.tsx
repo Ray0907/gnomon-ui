@@ -576,7 +576,9 @@ function CodePanel({
 							index_line === line_highlighted ? "highlighted" : "default"
 						}
 					>
-						<span>{String(index_line + 1).padStart(2, "0")}</span>
+						<span aria-hidden="true">
+							{String(index_line + 1).padStart(2, "0")}
+						</span>
 						<code>{line_code || " "}</code>
 					</div>
 				))}

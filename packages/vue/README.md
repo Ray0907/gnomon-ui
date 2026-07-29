@@ -25,7 +25,9 @@ const items = [{ value: "alpha" }, { value: "beta" }];
 ```
 
 The Vue adapter mirrors the React contract through `v-model`, scoped slots, and
-semantic collection attributes.
+semantic collection attributes. Items belong inside `Spatial.Collection`; native
+listeners compose with Gnomon behavior and may cancel selection with
+`preventDefault()`.
 
 This is an alpha release. See the
 [adapter guide](https://ray0907.github.io/gnomon-ui/docs/adapters/) and
