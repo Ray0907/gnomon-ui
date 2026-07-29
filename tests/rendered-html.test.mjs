@@ -98,6 +98,21 @@ test("links primary navigation to substantive documentation routes", async () =>
 	assert.match(html_getting_started, /Run Gnomon UI locally/);
 });
 
+test("redirects legacy homepage hashes to their substantive routes", async () => {
+	const { getRouteFromLegacyHash } = await import("../app/legacy-routes.ts");
+	assert.equal(getRouteFromLegacyHash("#adapters"), "/docs/adapters/");
+	assert.equal(
+		getRouteFromLegacyHash("#stage"),
+		"/examples/spatial-collection/",
+	);
+	assert.equal(getRouteFromLegacyHash("#anatomy"), "/docs/primitives/");
+	assert.equal(
+		getRouteFromLegacyHash("#installation"),
+		"/docs/getting-started/",
+	);
+	assert.equal(getRouteFromLegacyHash("#unknown"), null);
+});
+
 test("keeps core framework agnostic and ships React and Vue bindings", async () => {
 	const sources = await readSources();
 	assert.doesNotMatch(sources.core, /from ["']react["']/);

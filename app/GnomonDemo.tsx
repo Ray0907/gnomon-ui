@@ -20,6 +20,7 @@ import {
 	type KeyboardEvent,
 } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Spatial, useSpatial } from "@gnomon-ui/react";
 import {
 	mountSpatialRenderer,
@@ -34,6 +35,7 @@ import {
 	SpatialDemoEngine,
 	type SpatialSceneAnchor,
 } from "./SpatialDemoEngine";
+import { getRouteFromLegacyHash } from "./legacy-routes";
 
 type FrameworkName = "react" | "vue";
 type DocsTab = "anatomy" | "props" | "events";
@@ -895,6 +897,7 @@ function LiveStage({
 }
 
 export function GnomonDemo() {
+	const router_navigation = useRouter();
 	const records_spatial = useMemo(
 		() => demoItems.map((item_data) => ({ value: item_data.id })),
 		[],
@@ -911,6 +914,13 @@ export function GnomonDemo() {
 		y: 0.5,
 	});
 	const [events, setEvents] = useState<EventEntry[]>([]);
+
+	useEffect(() => {
+		const route_legacy = getRouteFromLegacyHash(window.location.hash);
+		if (route_legacy) {
+			router_navigation.replace(route_legacy);
+		}
+	}, [router_navigation]);
 
 	function handleValueChange(details: SpatialChangeDetails) {
 		setSelected(details.value);
