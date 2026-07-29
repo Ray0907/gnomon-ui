@@ -1,0 +1,10 @@
+{
+  "name": "@gnomon-ui/theme",
+  "version": "0.1.0",
+  "description": "Optional calibration-lab theme tokens for Gnomon UI.",
+  "license": "MIT",
+  "sideEffects": ["styles.css"],
+  "exports": {
+    "./styles.css": "./styles.css"
+  }
+}

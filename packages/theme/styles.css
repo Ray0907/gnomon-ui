@@ -1,0 +1,29 @@
+:root {
+	--gnomon-mineral: #f4f5f1;
+	--gnomon-mineral-deep: #e9ece7;
+	--gnomon-white: #fbfcf8;
+	--gnomon-ink: #10120f;
+	--gnomon-ink-muted: #5f655f;
+	--gnomon-hairline: rgba(16, 18, 15, 0.16);
+	--gnomon-hairline-strong: rgba(16, 18, 15, 0.34);
+	--gnomon-cobalt: #173fff;
+	--gnomon-cobalt-deep: #0827c9;
+	--gnomon-acid: #b8f500;
+	--gnomon-acid-ink: #557300;
+	--gnomon-signal: #ff3f24;
+	--gnomon-axis-y: #527b00;
+	--gnomon-aluminum: #b8bdb8;
+	--gnomon-radius: 2px;
+	--gnomon-radius-object-device: 7px;
+	--gnomon-radius-object-textile: 8px;
+	--gnomon-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--gnomon-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+[data-gnomon-item][data-state="active"] {
+	--gnomon-item-state: 1;
+}
+
+[data-gnomon-item][data-state="inactive"] {
+	--gnomon-item-state: 0;
+}

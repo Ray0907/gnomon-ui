@@ -1,0 +1,432 @@
+{
+	"schemaVersion": 2,
+	"generatedAt": "2026-07-29T05:15:00.000Z",
+	"title": "Design System: Gnomon UI",
+	"extensions": {
+		"colorMeta": {
+			"mineral": {
+				"role": "neutral",
+				"displayName": "Mineral Atmosphere",
+				"canonical": "#f4f5f1",
+				"tonalRamp": [
+					"#20231f",
+					"#3d413a",
+					"#5f655b",
+					"#879087",
+					"#aeb6ad",
+					"#d0d6cf",
+					"#e9ece7",
+					"#f8faf6"
+				]
+			},
+			"mineral-deep": {
+				"role": "neutral",
+				"displayName": "Deep Mineral",
+				"canonical": "#e9ece7",
+				"tonalRamp": [
+					"#1c201c",
+					"#383d37",
+					"#596159",
+					"#7f887f",
+					"#a5aea5",
+					"#c8cec7",
+					"#e9ece7",
+					"#f7f9f5"
+				]
+			},
+			"white": {
+				"role": "neutral",
+				"displayName": "Instrument White",
+				"canonical": "#fbfcf8",
+				"tonalRamp": [
+					"#22231f",
+					"#41423d",
+					"#62645e",
+					"#888a84",
+					"#afb1aa",
+					"#d4d6d0",
+					"#eeeeea",
+					"#fbfcf8"
+				]
+			},
+			"ink": {
+				"role": "neutral",
+				"displayName": "Calibration Ink",
+				"canonical": "#10120f",
+				"tonalRamp": [
+					"#10120f",
+					"#292c27",
+					"#454a43",
+					"#666c64",
+					"#8d938b",
+					"#b6bbb4",
+					"#d9ddd7",
+					"#f4f6f2"
+				]
+			},
+			"ink-muted": {
+				"role": "neutral",
+				"displayName": "Muted Ink",
+				"canonical": "#5f655f",
+				"tonalRamp": [
+					"#151815",
+					"#303530",
+					"#4a514b",
+					"#5f655f",
+					"#858c85",
+					"#acb2ab",
+					"#d1d5d0",
+					"#f1f3ef"
+				]
+			},
+			"hairline": {
+				"role": "neutral",
+				"displayName": "Instrument Hairline",
+				"canonical": "rgba(16, 18, 15, 0.16)",
+				"tonalRamp": [
+					"#10120f",
+					"#292c27",
+					"#454a43",
+					"#666c64",
+					"#8d938b",
+					"#b6bbb4",
+					"#d9ddd7",
+					"#f4f6f2"
+				]
+			},
+			"hairline-strong": {
+				"role": "neutral",
+				"displayName": "Structural Hairline",
+				"canonical": "rgba(16, 18, 15, 0.34)",
+				"tonalRamp": [
+					"#10120f",
+					"#292c27",
+					"#454a43",
+					"#666c64",
+					"#8d938b",
+					"#b6bbb4",
+					"#d9ddd7",
+					"#f4f6f2"
+				]
+			},
+			"cobalt": {
+				"role": "primary",
+				"displayName": "Structural Cobalt",
+				"canonical": "#173fff",
+				"tonalRamp": [
+					"#03104b",
+					"#071b78",
+					"#0b29a8",
+					"#173fff",
+					"#4d68ff",
+					"#8394ff",
+					"#bcc6ff",
+					"#edf0ff"
+				]
+			},
+			"cobalt-deep": {
+				"role": "primary",
+				"displayName": "Deep Cobalt",
+				"canonical": "#0827c9",
+				"tonalRamp": [
+					"#020b35",
+					"#05165f",
+					"#07218f",
+					"#0827c9",
+					"#4057db",
+					"#7887e9",
+					"#b2baf5",
+					"#eceefd"
+				]
+			},
+			"acid": {
+				"role": "secondary",
+				"displayName": "Live Acid",
+				"canonical": "#b8f500",
+				"tonalRamp": [
+					"#1c2500",
+					"#334500",
+					"#527000",
+					"#78a000",
+					"#9bd000",
+					"#b8f500",
+					"#dafe83",
+					"#f3ffd4"
+				]
+			},
+			"acid-ink": {
+				"role": "secondary",
+				"displayName": "Readable Acid",
+				"canonical": "#557300",
+				"tonalRamp": [
+					"#172000",
+					"#2d3d00",
+					"#425b00",
+					"#557300",
+					"#799c1e",
+					"#a3c757",
+					"#cee98f",
+					"#efffcf"
+				]
+			},
+			"signal": {
+				"role": "tertiary",
+				"displayName": "Signal Vermilion",
+				"canonical": "#ff3f24",
+				"tonalRamp": [
+					"#3c0903",
+					"#6b1208",
+					"#9d1e10",
+					"#d52e19",
+					"#ff3f24",
+					"#ff7b67",
+					"#ffb4a7",
+					"#ffe8e3"
+				]
+			},
+			"axis-y": {
+				"role": "secondary",
+				"displayName": "Axis Green",
+				"canonical": "#527b00",
+				"tonalRamp": [
+					"#142000",
+					"#293d00",
+					"#3d5d00",
+					"#527b00",
+					"#78a223",
+					"#a0ca59",
+					"#cce893",
+					"#efffcf"
+				]
+			},
+			"aluminum": {
+				"role": "neutral",
+				"displayName": "Anodized Aluminum",
+				"canonical": "#b8bdb8",
+				"tonalRamp": [
+					"#1f2320",
+					"#3b403c",
+					"#5b615c",
+					"#7f8680",
+					"#a4aaa5",
+					"#b8bdb8",
+					"#d9ddd9",
+					"#f2f4f1"
+				]
+			}
+		},
+		"typographyMeta": {
+			"headline": {
+				"displayName": "Offer Headline",
+				"purpose": "Primary desktop product statement."
+			},
+			"headline-narrow": {
+				"displayName": "Narrow Headline",
+				"purpose": "Headline below the wide desktop breakpoint."
+			},
+			"headline-stacked": {
+				"displayName": "Stacked Headline",
+				"purpose": "Headline after the docs and stage stack."
+			},
+			"headline-mobile": {
+				"displayName": "Mobile Headline",
+				"purpose": "Phone-width product statement."
+			},
+			"headline-short": {
+				"displayName": "Short Viewport Headline",
+				"purpose": "Desktop headline under constrained height."
+			},
+			"stage-display": {
+				"displayName": "Stage Registration",
+				"purpose": "Oversized low-contrast scene title."
+			},
+			"stage-display-stacked": {
+				"displayName": "Stacked Stage Registration",
+				"purpose": "Scene title on tablet layouts."
+			},
+			"stage-display-mobile": {
+				"displayName": "Mobile Stage Registration",
+				"purpose": "Scene title on phone layouts."
+			},
+			"title": {
+				"displayName": "Inspector Title",
+				"purpose": "Selected item names."
+			},
+			"brand": {
+				"displayName": "Wordmark",
+				"purpose": "Desktop product identity."
+			},
+			"brand-mobile": {
+				"displayName": "Mobile Wordmark",
+				"purpose": "Compact product identity."
+			},
+			"body": {
+				"displayName": "Interface Body",
+				"purpose": "Offer and explanatory copy."
+			},
+			"body-compact": {
+				"displayName": "Compact Body",
+				"purpose": "Primitive and state explanations."
+			},
+			"label": {
+				"displayName": "Instrument Label",
+				"purpose": "Primitive names and high-priority data."
+			},
+			"label-fluid": {
+				"displayName": "Code Label",
+				"purpose": "Responsive code examples."
+			},
+			"label-sm": {
+				"displayName": "Small Instrument Label",
+				"purpose": "Measurements and selection values."
+			},
+			"label-xs": {
+				"displayName": "Extra-small Instrument Label",
+				"purpose": "Tabs, navigation, and framework controls."
+			},
+			"label-xxs": {
+				"displayName": "Micro Instrument Label",
+				"purpose": "Status and compact metadata."
+			},
+			"label-micro": {
+				"displayName": "Renderer Micro Label",
+				"purpose": "Fallback object captions."
+			}
+		},
+		"shadows": [],
+		"motion": [
+			{
+				"name": "interface-fast",
+				"value": "140ms",
+				"purpose": "Press, hover, and tab feedback."
+			},
+			{
+				"name": "interface-standard",
+				"value": "220ms",
+				"purpose": "Panel and selection-state transitions."
+			},
+			{
+				"name": "ease-out",
+				"value": "cubic-bezier(0.23, 1, 0.32, 1)",
+				"purpose": "Small interface movement and damped arrival."
+			},
+			{
+				"name": "ease-in-out",
+				"value": "cubic-bezier(0.77, 0, 0.175, 1)",
+				"purpose": "Renderer travel between selected objects."
+			}
+		],
+		"breakpoints": [
+			{
+				"name": "mobile",
+				"value": "620px"
+			},
+			{
+				"name": "stack",
+				"value": "900px"
+			},
+			{
+				"name": "narrow-desktop",
+				"value": "1180px"
+			},
+			{
+				"name": "short-desktop",
+				"value": "760px height"
+			}
+		]
+	},
+	"components": [
+		{
+			"name": "Primary Documentation Action",
+			"kind": "button",
+			"refersTo": "action-primary",
+			"description": "A cobalt, fully labeled action for the principal documentation route.",
+			"html": "<button class=\"ds-action\">GET STARTED</button>",
+			"css": ".ds-action { min-width: 132px; height: 44px; padding: 0 18px; border: 0; border-radius: var(--gnomon-radius); color: var(--gnomon-white); background: var(--gnomon-cobalt); font: 500 8px/1 'JetBrains Mono Variable', monospace; cursor: pointer; transition: background-color 140ms ease, transform 140ms var(--gnomon-ease-out); } .ds-action:hover { background: var(--gnomon-cobalt-deep); } .ds-action:active { transform: scale(.97); } .ds-action:focus-visible { outline: 2px solid var(--gnomon-ink); outline-offset: 3px; box-shadow: 0 0 0 5px var(--gnomon-acid); }"
+		},
+		{
+			"name": "Adapter Segmented Control",
+			"kind": "button",
+			"refersTo": "tab-active",
+			"description": "A ruled framework switch with one committed active field.",
+			"html": "<div class=\"ds-segment\" role=\"group\"><button data-state=\"inactive\">React</button><button data-state=\"active\">Vue</button></div>",
+			"css": ".ds-segment { display: inline-grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--gnomon-hairline-strong); } .ds-segment button { min-width: 74px; height: 44px; border: 0; border-radius: 0; color: var(--gnomon-ink); background: transparent; font: 500 8px/1 'JetBrains Mono Variable', monospace; cursor: pointer; } .ds-segment button + button { border-left: 1px solid var(--gnomon-hairline-strong); } .ds-segment button[data-state='active'] { color: var(--gnomon-white); background: var(--gnomon-cobalt); } .ds-segment button:focus-visible { outline: 2px solid var(--gnomon-ink); outline-offset: 3px; box-shadow: 0 0 0 5px var(--gnomon-acid); }"
+		},
+		{
+			"name": "Primitive Tree Row",
+			"kind": "custom",
+			"description": "A semantic component node with a visible registration endpoint.",
+			"html": "<button class=\"ds-primitive\" data-state=\"active\"><span>◆</span><strong>Spatial.Item</strong><i></i></button>",
+			"css": ".ds-primitive { display: grid; grid-template-columns: 18px 1fr 12px; gap: 8px; align-items: center; width: 280px; min-height: 44px; padding: 0 10px; border: 1px solid var(--gnomon-cobalt); border-radius: 0; color: var(--gnomon-ink); background: var(--gnomon-white); text-align: left; font: 500 10px/1 'JetBrains Mono Variable', monospace; } .ds-primitive span { color: var(--gnomon-cobalt); } .ds-primitive i { width: 6px; height: 6px; border: 1px solid var(--gnomon-acid); background: var(--gnomon-acid); } .ds-primitive:focus-visible { outline: 2px solid var(--gnomon-ink); outline-offset: 3px; box-shadow: 0 0 0 5px var(--gnomon-acid); }"
+		},
+		{
+			"name": "Stage Status Rail",
+			"kind": "nav",
+			"description": "The compact rail that proves renderer, collection, and selected state.",
+			"html": "<div class=\"ds-status\"><span><i></i>LIVE / WEBGL</span><span>COLLECTION / 08</span><span>STATE / <strong>SELECTED</strong></span></div>",
+			"css": ".ds-status { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; height: 46px; border-bottom: 1px solid var(--gnomon-hairline); color: var(--gnomon-ink); background: var(--gnomon-mineral); font: 500 7px/1 'JetBrains Mono Variable', monospace; } .ds-status span { display: flex; gap: 8px; align-items: center; padding: 0 28px; } .ds-status span:nth-child(2) { justify-content: center; } .ds-status span:last-child { justify-content: flex-end; } .ds-status i { width: 7px; height: 7px; background: var(--gnomon-acid); } .ds-status strong { color: var(--gnomon-acid-ink); }"
+		},
+		{
+			"name": "Selection Inspector",
+			"kind": "card",
+			"refersTo": "inspector",
+			"description": "A square instrument panel for selection state and navigation.",
+			"html": "<aside class=\"ds-inspector\"><small>SELECTED ITEM</small><h3>vessel-04</h3><p>DATA-STATE: <strong>active</strong></p><dl><dt>TYPE</dt><dd>VESSEL</dd><dt>INPUT</dt><dd>KEYBOARD</dd></dl><div><button>PREV</button><button>NEXT</button></div></aside>",
+			"css": ".ds-inspector { width: 238px; border: 1px solid var(--gnomon-hairline-strong); border-radius: 0; color: var(--gnomon-ink); background: var(--gnomon-white); font-family: 'JetBrains Mono Variable', monospace; } .ds-inspector small { display: block; padding: 15px; border-bottom: 1px solid var(--gnomon-hairline); font-size: 7px; } .ds-inspector h3 { margin: 0; padding: 16px 15px 4px; font: 620 24px/1 'Archivo Variable', sans-serif; } .ds-inspector p { margin: 0; padding: 5px 15px 14px; border-bottom: 1px solid var(--gnomon-hairline); font-size: 7px; } .ds-inspector strong { color: var(--gnomon-acid-ink); } .ds-inspector dl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 12px 15px; font-size: 7px; } .ds-inspector dd { margin: 0; } .ds-inspector div { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--gnomon-hairline-strong); } .ds-inspector button { min-height: 44px; border: 0; border-radius: 0; background: transparent; font: 500 7px/1 'JetBrains Mono Variable', monospace; } .ds-inspector button + button { border-left: 1px solid var(--gnomon-hairline-strong); }"
+		},
+		{
+			"name": "Object Index Rail",
+			"kind": "nav",
+			"description": "A numbered collection rail with one taller active registration mark.",
+			"html": "<nav class=\"ds-index\" aria-label=\"Object index\"><button>01<i></i></button><button>02<i></i></button><button data-state=\"active\">03<i></i></button><button>04<i></i></button></nav>",
+			"css": ".ds-index { display: grid; grid-template-columns: repeat(4, 1fr); align-items: end; width: 420px; height: 44px; border-bottom: 1px solid var(--gnomon-hairline-strong); } .ds-index button { position: relative; height: 44px; border: 0; border-radius: 0; background: transparent; font: 500 7px/1 'JetBrains Mono Variable', monospace; } .ds-index i { position: absolute; bottom: -1px; left: 50%; width: 1px; height: 7px; background: var(--gnomon-ink); opacity: .45; } .ds-index button[data-state='active'] { color: var(--gnomon-cobalt); } .ds-index button[data-state='active'] i { width: 2px; height: 23px; background: var(--gnomon-cobalt); opacity: 1; }"
+		}
+	],
+	"narrative": {
+		"northStar": "The Calibration Instrument",
+		"overview": "Gnomon UI feels designed by the people who build museum display systems and precision developer tools. Mineral surfaces, cobalt structural fields, acid status marks, aluminum gnomons, rulers, axes, and square controls make the interface feel physical without imitating a desktop editor. Component anatomy and spatial output are one system. Lines explain selection, measure, hierarchy, focus, or code-to-scene correspondence; they are never added as technical decoration. The visual system is precise, direct, and quietly confident.",
+		"keyCharacteristics": [
+			"Bright mineral atmosphere with one committed cobalt structural field.",
+			"Flat DOM surfaces connected to a dimensional, object-led WebGL stage.",
+			"Archivo wayfinding paired with JetBrains Mono instrument readouts.",
+			"Hairlines, registration marks, and measurement rails instead of floating cards.",
+			"Framework code, semantic state, and spatial selection remain visibly connected."
+		],
+		"rules": [
+			{
+				"name": "The Committed Cobalt Rule",
+				"body": "Cobalt owns substantial functional regions rather than appearing as scattered accent confetti.",
+				"section": "colors"
+			},
+			{
+				"name": "The Reinforced State Rule",
+				"body": "Color never carries state alone; copy, position, outline, or iconography must confirm it.",
+				"section": "colors"
+			},
+			{
+				"name": "The Two Voices Rule",
+				"body": "Archivo carries meaning and navigation; JetBrains Mono carries system evidence. Mono is never decorative texture.",
+				"section": "typography"
+			},
+			{
+				"name": "The Flat Instrument Rule",
+				"body": "A DOM surface may overlap another surface, but it does not float through a generic box shadow.",
+				"section": "elevation"
+			}
+		],
+		"dos": [
+			"Do demonstrate real APIs and state changes in every example.",
+			"Do let one cobalt structural field carry the composition's visual energy.",
+			"Do use measurement and registration only when they explain relationships.",
+			"Do author synthetic objects with enough specificity to feel real.",
+			"Do keep React, Vue, DOM fallback, and WebGL selection behavior equivalent."
+		],
+		"donts": [
+			"Don't make books the product identity; they are one demo object type.",
+			"Don't turn every data point into a badge or rounded card.",
+			"Don't scatter decorative axes, rulers, or code fragments without meaning.",
+			"Don't copy Stripe Press typography, palette, imagery, or page structure.",
+			"Don't hide essential navigation behind unlabeled icons."
+		]
+	}
+}

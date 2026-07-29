@@ -1,0 +1,31 @@
+{
+  "name": "@gnomon-ui/react",
+  "version": "0.1.0",
+  "description": "React compound components and hooks for Gnomon UI.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@gnomon-ui/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.17",
+    "react": "19.2.7",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "@gnomon-ui/core": "^0.1.0",
+    "react": ">=18.3.0"
+  }
+}

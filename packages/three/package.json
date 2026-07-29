@@ -1,0 +1,27 @@
+{
+  "name": "@gnomon-ui/three",
+  "version": "0.1.0",
+  "description": "Framework-neutral renderer lifecycle for Gnomon UI and Three.js.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@gnomon-ui/core": "workspace:*",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "@gnomon-ui/core": "^0.1.0",
+    "three": ">=0.160.0"
+  }
+}
