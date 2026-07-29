@@ -520,8 +520,10 @@ function CodePanel({
 	);
 	const command_install =
 		framework_name === "react"
-			? "pnpm add @gnomon-ui/react @gnomon-ui/three"
-			: "pnpm add @gnomon-ui/vue @gnomon-ui/three";
+			? "pnpm add @gnomon-ui/core@next @gnomon-ui/react@next " +
+				"@gnomon-ui/three@next three"
+			: "pnpm add @gnomon-ui/core@next @gnomon-ui/vue@next " +
+				"@gnomon-ui/three@next three";
 	const lines_code = getCodeLines(framework_name, value_selected);
 	const line_highlighted = getHighlightedCodeLine(
 		framework_name,

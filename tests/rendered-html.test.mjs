@@ -75,7 +75,10 @@ test("exports the Gnomon UI framework demo", async () => {
 	assert.match(html, /Select Geometry Essentials/);
 	assert.match(html, /Select Task Light 02/);
 	assert.match(html, /Select Mineral Vessel/);
-	assert.match(html, /pnpm add @gnomon-ui\/react @gnomon-ui\/three/);
+	assert.match(
+		html,
+		/pnpm add @gnomon-ui\/core@next @gnomon-ui\/react@next @gnomon-ui\/three@next three/,
+	);
 	assert.match(html, /og:image/);
 	assert.match(
 		html,
@@ -117,7 +120,11 @@ test("links primary navigation to substantive documentation routes", async () =>
 	assert.match(html_primitives, /Primitive anatomy/);
 	assert.match(html_adapters, /One contract, every framework/);
 	assert.match(html_example, /Spatial Collection/);
-	assert.match(html_getting_started, /Run Gnomon UI locally/);
+	assert.match(html_getting_started, /Install Gnomon UI/);
+	assert.match(
+		html_getting_started,
+		/pnpm add @gnomon-ui\/core@next @gnomon-ui\/react@next/,
+	);
 });
 
 test("redirects legacy homepage hashes to their substantive routes", async () => {

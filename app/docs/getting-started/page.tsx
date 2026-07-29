@@ -5,13 +5,11 @@ import { ReferenceShell } from "../../reference/ReferenceShell";
 export const metadata: Metadata = {
 	title: "Getting Started — Gnomon UI",
 	description:
-		"Clone the Gnomon UI workspace and run the spatial primitive demo locally.",
+		"Install the Gnomon UI alpha packages for React, Vue, and Three.js.",
 };
 
-const code_setup = `git clone https://github.com/Ray0907/gnomon-ui.git
-cd gnomon-ui
-pnpm install
-pnpm dev`;
+const code_setup = `pnpm add @gnomon-ui/core@next @gnomon-ui/react@next
+pnpm add @gnomon-ui/three@next three`;
 
 const code_model = `<Spatial.Root items={items} value={selected} onValueChange={setSelected}>
   <Spatial.Scene asChild>
@@ -28,34 +26,33 @@ export default function GettingStartedPage() {
 	return (
 		<ReferenceShell
 			active_route="getting-started"
-			eyebrow="START / LOCAL WORKSPACE"
+			eyebrow="START / NPM ALPHA"
 			links_on_page={[
-				{ href: "#run", label: "Run locally" },
+				{ href: "#run", label: "Install packages" },
 				{ href: "#model", label: "Mental model" },
 				{ href: "#next", label: "Choose an adapter" },
 			]}
 			summary={
-				"Start with the public workspace today. Core owns interaction state; " +
-				"your renderer owns every pixel in the scene."
+				"Install the public alpha packages. Core owns interaction state; your " +
+				"renderer continues to own every pixel in the scene."
 			}
-			title="Run Gnomon UI locally"
+			title="Install Gnomon UI"
 		>
 			<section id="run">
-				<h2>One workspace, four packages.</h2>
+				<h2>Install only what your scene needs.</h2>
 				<p>
-					The current <strong>v0.1 prototype</strong> ships as a pnpm
-					workspace. Clone it to inspect the core contract, React and Vue
-					bindings, and the Three.js renderer adapter together.
+					The public <strong>v0.1 alpha</strong> is available on npm. Start
+					with Core and one framework adapter. Add the Three.js lifecycle
+					bridge only when the project renders a WebGL scene.
 				</p>
-				<pre className="reference-code" data-label="TERMINAL / LOCAL PREVIEW">
+				<pre className="reference-code" data-label="TERMINAL / REACT + WEBGL">
 					<code>{code_setup}</code>
 				</pre>
 				<div className="reference-callout">
-					<span>STATUS</span>
+					<span>ALPHA</span>
 					<p>
-						The workspace is runnable now. Registry packages are the next
-						release step, so this guide does not pretend an unpublished install
-						command is available.
+						Use the <code>@next</code> tag while APIs are still settling.
+						Every package is ESM-only and includes TypeScript declarations.
 					</p>
 				</div>
 			</section>

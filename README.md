@@ -18,8 +18,8 @@ shape or bundled content library.
 
 Gnomon UI is a public v0.1 framework prototype. The repository implements and
 tests the package boundaries, state contracts, React/Vue bindings, Three.js
-lifecycle, and documentation demo. The npm packages remain unpublished and the
-public npm namespace has not been reserved.
+lifecycle, and documentation demo. The `0.1.0-alpha.1` packages are published
+under the public [`@gnomon-ui`](https://www.npmjs.com/org/gnomon-ui) npm scope.
 
 ## Packages
 
@@ -33,6 +33,32 @@ public npm namespace has not been reserved.
 
 The core and renderer contracts are intentionally open so Svelte, Solid, other
 renderers, and non-Three scenes can integrate without changing the data model.
+
+## Install
+
+The current release is an alpha. Use the `next` tag while APIs are settling.
+
+```bash
+pnpm add @gnomon-ui/core@next @gnomon-ui/react@next
+```
+
+For Vue:
+
+```bash
+pnpm add @gnomon-ui/core@next @gnomon-ui/vue@next
+```
+
+Add the optional Three.js renderer lifecycle when needed:
+
+```bash
+pnpm add @gnomon-ui/three@next three
+```
+
+The visual theme is optional:
+
+```bash
+pnpm add @gnomon-ui/theme@next
+```
 
 ## Run the demo
 
